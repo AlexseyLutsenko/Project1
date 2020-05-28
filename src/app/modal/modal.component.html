@@ -1,0 +1,30 @@
+<style>
+  body.modal-content {
+    height: 400px;
+  }
+</style>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Выберите данные из списка</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="form-group">
+    <!-- Search form -->
+    <label class="label-form" for="exampleFormControlSelect1">Поиск по спискам:</label>
+    <input class="form-control" id="exampleFormControlFind" type="text" placeholder="Поиск" aria-label="Search">
+
+    <label class="label-form" for="exampleFormControlSelect1">Выберите список:</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option *ngFor="let d of data">{{d}}</option>
+    </select>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Добавить</button>
+  </div>
+</ng-template>
+
+
+<textarea cols="50" rows="10" (contextmenu)="open(content)" [(ngModel)]="text"></textarea>
